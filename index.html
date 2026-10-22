@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>作品集</title>
+<meta name="description" content="穿搭与影像的个人作品整理。">
+<style>
+  * { box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
+  body {
+    margin: 0; background: #F7F7F5; color: #1A1A1A;
+    font-family: -apple-system, BlinkMacSystemFont, "PingFang SC", "Microsoft YaHei", sans-serif;
+    font-size: 16px; line-height: 1.6; -webkit-font-smoothing: antialiased;
+  }
+  .wrap { max-width: 900px; margin: 0 auto; padding: 0 20px 100px; }
+
+  header { padding: 72px 0 8px; }
+  .eyebrow {
+    font-size: 12px; letter-spacing: .18em; color: #8C8A82;
+    text-transform: uppercase; margin-bottom: 18px;
+  }
+  h1 {
+    font-size: 46px; font-weight: 600; letter-spacing: -.025em;
+    margin: 0 0 16px; line-height: 1.12;
+  }
+  .lead { font-size: 16px; color: #4A4A46; margin: 0; max-width: 30em; }
+
+  .grid {
+    margin-top: 52px;
+    display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 22px;
+  }
+
+  a.card {
+    display: block; text-decoration: none; color: inherit;
+    background: #fff; border: 1px solid #E8E8E4; border-radius: 16px;
+    overflow: hidden;
+    transition: transform .22s ease, box-shadow .22s ease, border-color .22s ease;
+  }
+  a.card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 14px 34px rgba(26,26,26,.09);
+    border-color: #D8D8D2;
+  }
+  .cover { position: relative; aspect-ratio: 16/10; overflow: hidden; background: #EDEDE9; }
+  .cover img { width: 100%; height: 100%; object-fit: cover; display: block; transition: transform .5s ease; }
+  a.card:hover .cover img { transform: scale(1.035); }
+
+  .cover.typo {
+    display: flex; flex-direction: column; justify-content: flex-end;
+    background: linear-gradient(150deg, #24241F 0%, #3A3A33 55%, #B08A5E 190%);
+    padding: 24px;
+  }
+  .cover.typo .big {
+    font-size: 54px; font-weight: 600; color: rgba(255,255,255,.94);
+    letter-spacing: -.03em; line-height: 1; font-variant-numeric: tabular-nums;
+  }
+  .cover.typo .sub {
+    font-size: 12.5px; letter-spacing: .16em; color: rgba(255,255,255,.56);
+    text-transform: uppercase; margin-top: 10px;
+  }
+
+  .body { padding: 20px 22px 24px; }
+  .meta {
+    font-size: 11.5px; letter-spacing: .14em; color: #B08A5E;
+    text-transform: uppercase; margin-bottom: 9px;
+  }
+  .body h2 { font-size: 21px; font-weight: 600; margin: 0 0 9px; letter-spacing: -.01em; }
+  .body p { font-size: 14px; color: #6B6B66; margin: 0; line-height: 1.65; }
+  .go {
+    margin-top: 16px; font-size: 13.5px; color: #1A1A1A;
+    display: inline-flex; align-items: center; gap: 6px;
+  }
+  .go .arw { transition: transform .22s ease; }
+  a.card:hover .go .arw { transform: translateX(4px); }
+
+  footer {
+    margin-top: 72px; padding-top: 22px; border-top: 1px solid #E8E8E4;
+    font-size: 13px; color: #A8A8A2; display: flex;
+    flex-wrap: wrap; gap: 6px 18px; justify-content: space-between;
+  }
+
+  @media (max-width: 560px) {
+    header { padding-top: 48px; }
+    h1 { font-size: 34px; }
+    .cover.typo .big { font-size: 42px; }
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <header>
+    <div class="eyebrow">Portfolio</div>
+    <h1>作品集</h1>
+    <p class="lead">一些自己看得过去的东西：衣柜里试出来的搭配，路上拍回来的素材。都放在这里。</p>
+  </header>
+
+  <div class="grid">
+
+    <a class="card" href="looks.html">
+      <div class="cover">
+        <img src="assets/img/young1.jpg" alt="黑白灰八套搭配图册封面" loading="lazy">
+      </div>
+      <div class="body">
+        <div class="meta">穿搭 · 2026.10</div>
+        <h2>黑白灰八套搭配</h2>
+        <p>按 176cm / 65kg 偏清瘦体型整理的八套方案，每套含单品平铺与上身参考，另附叠穿的四个做法。</p>
+        <span class="go">看图册 <span class="arw">→</span></span>
+      </div>
+    </a>
+
+    <a class="card" href="shanxi.html">
+      <div class="cover typo">
+        <div class="big">253</div>
+        <div class="sub">clips · 21.4 min · 4K 25p</div>
+      </div>
+      <div class="body">
+        <div class="meta">影像 · 2026.09</div>
+        <h2>山西行 · 剪辑大纲</h2>
+        <p>大同、应县、平遥四天素材的整理结果：分镜表、段落结构、配乐节点，以及取舍理由。</p>
+        <span class="go">看大纲 <span class="arw">→</span></span>
+      </div>
+    </a>
+
+  </div>
+
+  <footer>
+    <span>整理于 2026 年 10 月</span>
+    <span>通过 GitHub Pages 发布</span>
+  </footer>
+
+</div>
+</body>
+</html>

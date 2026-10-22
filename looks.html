@@ -1,0 +1,439 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>八套搭配图册 · 含上身效果</title>
+<style>
+  * { box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
+  body {
+    margin: 0; background: #F7F7F5; color: #1A1A1A;
+    font-family: -apple-system, BlinkMacSystemFont, "PingFang SC", "Microsoft YaHei", sans-serif;
+    font-size: 16px; line-height: 1.6; -webkit-font-smoothing: antialiased;
+  }
+  .wrap { max-width: 760px; margin: 0 auto; padding: 0 16px 80px; }
+
+  header { padding: 40px 0 18px; }
+  .eyebrow { font-size: 12px; letter-spacing: .12em; color: #8C8A82; text-transform: uppercase; margin-bottom: 12px; }
+  h1 { font-size: 30px; font-weight: 600; margin: 0 0 14px; letter-spacing: -.01em; }
+  .lead { font-size: 15px; color: #4A4A46; margin: 0; }
+  .profile { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 16px; }
+  .chip { font-size: 13px; padding: 5px 12px; border-radius: 100px; background: #fff; border: 1px solid #E2E2DE; color: #4A4A46; }
+
+  .nav { display: flex; gap: 8px; overflow-x: auto; padding: 14px 0 6px; }
+  .nav a { flex-shrink: 0; font-size: 13px; text-decoration: none; color: #4A4A46; background: #fff; border: 1px solid #E2E2DE; border-radius: 100px; padding: 7px 14px; }
+
+  section.info { margin-top: 40px; }
+  section.info h3 {
+    font-size: 13px; font-weight: 600; letter-spacing: .1em; color: #8C8A82;
+    text-transform: uppercase; margin: 0 0 14px; padding-bottom: 10px; border-bottom: 1px solid #E2E2DE;
+  }
+  .tbl-wrap { background: #fff; border-radius: 12px; border: 1px solid #E8E8E4; padding: 4px 12px; overflow-x: auto; }
+  table { width: 100%; border-collapse: collapse; font-size: 14px; }
+  th, td { text-align: left; padding: 11px 10px; border-bottom: 1px solid #E8E8E4; vertical-align: top; }
+  th { font-size: 12px; color: #8C8A82; font-weight: 500; }
+  .old { color: #A8A8A2; text-decoration: line-through; }
+  .new { color: #1A1A1A; font-weight: 500; }
+
+  .rules { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 12px; }
+  .rule { background: #fff; border: 1px solid #E8E8E4; border-radius: 12px; padding: 16px 18px; }
+  .rule-n { font-size: 12px; color: #B08A5E; font-weight: 600; letter-spacing: .06em; }
+  .rule h4 { font-size: 16px; font-weight: 500; margin: 4px 0 6px; }
+  .rule p { font-size: 13.5px; color: #6B6B66; margin: 0; line-height: 1.6; }
+
+  .look { background: #fff; border-radius: 14px; border: 1px solid #E8E8E4; margin-top: 24px; overflow: hidden; scroll-margin-top: 20px; }
+  .kits { width: 100%; display: block; aspect-ratio: 3/2; object-fit: cover; border-bottom: 1px solid #EFEFEB; }
+  .look-grid { display: grid; grid-template-columns: 260px 1fr; gap: 0; }
+  .model { width: 100%; height: 100%; object-fit: cover; aspect-ratio: 2/3; display: block; }
+  .look-body { padding: 20px; min-width: 0; }
+  .look-head { display: flex; justify-content: space-between; align-items: flex-start; gap: 10px; }
+  .num { font-size: 11px; font-weight: 600; letter-spacing: .08em; color: #8C8A82; }
+  h2 { font-size: 21px; font-weight: 600; margin: 2px 0 6px; }
+  .tagline { font-size: 14px; color: #6B6B66; margin: 0 0 12px; }
+  .fav {
+    flex-shrink: 0; width: 40px; height: 40px; border-radius: 50%;
+    border: 1px solid #E2E2DE; background: #fff; cursor: pointer;
+    font-size: 18px; line-height: 1; color: #C4C4BE;
+    display: flex; align-items: center; justify-content: center; transition: all .15s;
+  }
+  .fav.on { background: #1A1A1A; border-color: #1A1A1A; color: #fff; }
+  .scene { display: inline-block; font-size: 12.5px; color: #4A4A46; background: #F0F0EC; border-radius: 6px; padding: 4px 10px; margin-bottom: 12px; }
+  .badge-new { display: inline-block; font-size: 11.5px; color: #fff; background: #B08A5E; border-radius: 5px; padding: 3px 8px; margin-bottom: 12px; margin-left: 6px; }
+  ul.items { list-style: none; margin: 0; padding: 0; }
+  ul.items li { display: flex; gap: 10px; padding: 8px 0; border-top: 1px solid #F0F0EC; font-size: 14.5px; }
+  ul.items li:first-child { border-top: none; }
+  .dot { width: 7px; height: 7px; border-radius: 50%; background: #1A1A1A; margin-top: 9px; flex-shrink: 0; }
+  ul.items li b { font-weight: 500; }
+  ul.items li span { color: #6B6B66; font-size: 13.5px; }
+  ul.items li.hat { background: #FAFAF7; margin: 0 -10px; padding: 8px 10px; border-radius: 8px; border-top: none; }
+  ul.items li.hat .dot { background: #B08A5E; }
+  .tip { margin-top: 12px; padding: 11px 13px; font-size: 13.5px; background: #F0F0EC; border-radius: 8px; color: #4A4A46; }
+  .total { margin-top: 10px; font-size: 13px; color: #8C8A82; font-variant-numeric: tabular-nums; }
+
+  footer { margin-top: 40px; font-size: 13px; color: #A8A8A2; line-height: 1.7; }
+
+  @media (max-width: 620px) {
+    h1 { font-size: 25px; }
+    .look-body { padding: 16px; }
+    .look-grid { grid-template-columns: 1fr; }
+    .model { aspect-ratio: 3/4; }
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <header>
+    <div class="eyebrow">完整图册 · 23 岁版</div>
+    <h1>八套搭配，含上身效果</h1>
+    <p class="lead">每套两张图：上面是这套的全部单品平铺，左边是按 176cm / 65kg 体型做的上身参考。后面两套是加出来的重叠穿版本。</p>
+    <div class="profile">
+      <span class="chip">23 岁</span>
+      <span class="chip">176cm / 65kg</span>
+      <span class="chip">偏清瘦</span>
+      <span class="chip">黑白灰简约</span>
+    </div>
+  </header>
+
+  <section class="info">
+    <h3>叠穿怎么做才好看 · 四个招</h3>
+    <div class="rules">
+      <div class="rule">
+        <div class="rule-n">01</div>
+        <h4>长度差</h4>
+        <p>每层短一截，让下摆层层露出来。最里面那件要最长，露出的每一条边都是一根横线，把身体分段。</p>
+      </div>
+      <div class="rule">
+        <div class="rule-n">02</div>
+        <h4>敞开来穿</h4>
+        <p>中间层拉链不拉、扣子不扣，正面就变成两条竖线。竖线拉长，人也显得窄而挺——look 08 就是这么做的。</p>
+      </div>
+      <div class="rule">
+        <div class="rule-n">03</div>
+        <h4>领口递增</h4>
+        <p>圆领 → 连帽 → 翻领，一层比一层高。这是最有立体感的一招，比换颜色管用。</p>
+      </div>
+      <div class="rule">
+        <div class="rule-n">04</div>
+        <h4>材质不同</h4>
+        <p>棉的哑、抓绒的毛、尼龙的微光、皮面的亮。同样是黑，四种反光率摆在一起就有层次了。</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="info">
+    <h3>为什么会显老 · 换这六处</h3>
+    <div class="tbl-wrap">
+      <table>
+        <tr><th>位置</th><th>显老的做法</th><th>换成</th></tr>
+        <tr><td>鞋</td><td class="old">切尔西靴、乐福鞋</td><td class="new">球鞋、帆布鞋</td></tr>
+        <tr><td>裤</td><td class="old">修身西裤</td><td class="new">宽松直筒牛仔 / 工装裤</td></tr>
+        <tr><td>外套</td><td class="old">中长款大衣</td><td class="new">短款，衣长到胯骨</td></tr>
+        <tr><td>内搭</td><td class="old">衬衫 + V 领针织</td><td class="new">连帽卫衣，帽兜翻出来</td></tr>
+        <tr><td>帽子</td><td class="old">报童帽</td><td class="new">棒球帽 / 短款毛线帽</td></tr>
+        <tr><td>穿法</td><td class="old">上衣塞进裤子</td><td class="new">全部自然放下</td></tr>
+      </table>
+    </div>
+  </section>
+
+  <nav class="nav">
+    <a href="#y1">01 教练夹克</a>
+    <a href="#y2">02 抓绒马甲</a>
+    <a href="#y3">03 牛仔叠牛仔</a>
+    <a href="#y4">04 山系冲锋衣</a>
+    <a href="#y5">05 运动外套</a>
+    <a href="#y6">06 休闲西装</a>
+    <a href="#y7">07 三层下摆</a>
+    <a href="#y8">08 衬衫当夹层</a>
+  </nav>
+
+  <div class="look" id="y1">
+    <img class="kits" src="assets/img/young1.jpg" alt="教练夹克搭配单品平铺">
+    <div class="look-grid">
+      <img class="model" src="assets/img/model_y1.jpg" alt="教练夹克搭配上身效果">
+      <div class="look-body">
+        <div class="look-head">
+          <div>
+            <span class="num">LOOK 01</span>
+            <h2>教练夹克 + 连帽卫衣</h2>
+            <p class="tagline">最不容易出错，出门抓起来就穿</p>
+          </div>
+          <button class="fav" data-id="y1">♡</button>
+        </div>
+        <span class="scene">适合：日常 · 上班 · 见朋友</span>
+        <ul class="items">
+          <li><span class="dot"></span><div><b>哑光黑教练夹克</b> <span>按扣款，衣长到胯骨</span></div></li>
+          <li><span class="dot"></span><div><b>花灰连帽卫衣</b> <span>帽兜要能立住</span></div></li>
+          <li><span class="dot"></span><div><b>白圆领 T</b> <span>下摆露出一指</span></div></li>
+          <li><span class="dot"></span><div><b>黑宽松直筒牛仔</b> <span>裤脚在鞋面堆一点</span></div></li>
+          <li><span class="dot"></span><div><b>灰白复古慢跑鞋</b></div></li>
+          <li class="hat"><span class="dot"></span><div><b>黑棒球帽</b> <span>软顶弯檐</span></div></li>
+        </ul>
+        <div class="total">全套约 ¥1300–2650</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="look" id="y2">
+    <img class="kits" src="assets/img/young2.jpg" alt="抓绒马甲搭配单品平铺">
+    <div class="look-grid">
+      <img class="model" src="assets/img/model_y2.jpg" alt="抓绒马甲搭配上身效果">
+      <div class="look-body">
+        <div class="look-head">
+          <div>
+            <span class="num">LOOK 02</span>
+            <h2>抓绒马甲叠厚卫衣</h2>
+            <p class="tagline">山系味道，最保暖，二十多岁很好用</p>
+          </div>
+          <button class="fav" data-id="y2">♡</button>
+        </div>
+        <span class="scene">适合：降温天 · 周末 · 户外</span>
+        <ul class="items">
+          <li><span class="dot"></span><div><b>炭灰抓绒马甲</b> <span>拉链款，成本只有外套三分之一</span></div></li>
+          <li><span class="dot"></span><div><b>米白厚连帽卫衣</b> <span>重磅棉，不能软塌</span></div></li>
+          <li><span class="dot"></span><div><b>灰宽松工装裤</b> <span>直筒不束口</span></div></li>
+          <li><span class="dot"></span><div><b>厚底户外跑鞋</b> <span>底厚一点更显年轻</span></div></li>
+          <li><span class="dot"></span><div><b>白中筒袜</b> <span>露出来一点</span></div></li>
+          <li class="hat"><span class="dot"></span><div><b>灰短款毛线帽</b> <span>露额头，别选深桶款</span></div></li>
+        </ul>
+        <div class="total">全套约 ¥1230–2600</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="look" id="y3">
+    <img class="kits" src="assets/img/young3.jpg" alt="牛仔叠牛仔单品平铺">
+    <div class="look-grid">
+      <img class="model" src="assets/img/model_y3.jpg" alt="牛仔叠牛仔上身效果">
+      <div class="look-body">
+        <div class="look-head">
+          <div>
+            <span class="num">LOOK 03</span>
+            <h2>牛仔叠牛仔</h2>
+            <p class="tagline">唯一的彩色是牛仔蓝，深浅拉开就成立</p>
+          </div>
+          <button class="fav" data-id="y3">♡</button>
+        </div>
+        <span class="scene">适合：逛街 · 拍照 · 想有存在感</span>
+        <ul class="items">
+          <li><span class="dot"></span><div><b>深靛蓝牛仔夹克</b> <span>硬挺短款，肩线清楚</span></div></li>
+          <li><span class="dot"></span><div><b>浅灰连帽卫衣</b> <span>把两层牛仔隔开</span></div></li>
+          <li><span class="dot"></span><div><b>浅蓝水洗宽松牛仔</b> <span>和夹克深浅差至少三个色阶</span></div></li>
+          <li><span class="dot"></span><div><b>米白帆布鞋</b></div></li>
+          <li><span class="dot"></span><div><b>白中筒袜</b></div></li>
+          <li class="hat"><span class="dot"></span><div><b>深灰棒球帽</b> <span>比黑色柔和，配牛仔旧感</span></div></li>
+        </ul>
+        <div class="total">全套约 ¥1150–2350</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="look" id="y4">
+    <img class="kits" src="assets/img/young4.jpg" alt="山系冲锋衣单品平铺">
+    <div class="look-grid">
+      <img class="model" src="assets/img/model_y4.jpg" alt="山系冲锋衣上身效果">
+      <div class="look-body">
+        <div class="look-head">
+          <div>
+            <span class="num">LOOK 04</span>
+            <h2>山系冲锋衣 · 全暗色</h2>
+            <p class="tagline">最耐脏耐穿，石家庄刮风天实用</p>
+          </div>
+          <button class="fav" data-id="y4">♡</button>
+        </div>
+        <span class="scene">适合：通勤骑行 · 出游 · 降温</span>
+        <ul class="items">
+          <li><span class="dot"></span><div><b>炭灰尼龙冲锋衣</b> <span>哑光面料、带帽</span></div></li>
+          <li><span class="dot"></span><div><b>黑重磅连帽卫衣</b> <span>要厚，撑得起外面那层</span></div></li>
+          <li><span class="dot"></span><div><b>黑直筒工装裤</b> <span>口袋多没关系，版型别垮</span></div></li>
+          <li><span class="dot"></span><div><b>黑灰厚底徒步鞋</b> <span>有体积感</span></div></li>
+          <li><span class="dot"></span><div><b>黑斜挎小包（可选）</b> <span>身上有个包就活了</span></div></li>
+          <li class="hat"><span class="dot"></span><div><b>黑短款毛线帽</b> <span>暗黑路线配毛线帽更整</span></div></li>
+        </ul>
+        <div class="tip">全暗色靠面料区分：尼龙光、抓绒哑、皮面亮，三种反光率就够。</div>
+        <div class="total">全套约 ¥1430–3000</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="look" id="y5">
+    <img class="kits" src="assets/img/young5.jpg" alt="运动外套单品平铺">
+    <div class="look-grid">
+      <img class="model" src="assets/img/model_y5.jpg" alt="运动外套上身效果">
+      <div class="look-body">
+        <div class="look-head">
+          <div>
+            <span class="num">LOOK 05</span>
+            <h2>运动外套 · Athflow</h2>
+            <p class="tagline">最舒服的一套，纯色所以不邋遢</p>
+          </div>
+          <button class="fav" data-id="y5">♡</button>
+        </div>
+        <span class="scene">适合：通勤 · 久坐 · 运动后出门</span>
+        <ul class="items">
+          <li><span class="dot"></span><div><b>花灰拉链运动外套</b> <span>立领，logo 小或没有</span></div></li>
+          <li><span class="dot"></span><div><b>白圆领 T</b> <span>外套敞开时里面必须干净</span></div></li>
+          <li><span class="dot"></span><div><b>炭灰直筒运动裤</b> <span>直筒不要束脚，束脚显老气</span></div></li>
+          <li><span class="dot"></span><div><b>灰麂皮复古跑鞋</b> <span>最有分量的一件，别省</span></div></li>
+          <li><span class="dot"></span><div><b>白中筒袜</b></div></li>
+          <li class="hat"><span class="dot"></span><div><b>花灰棒球帽</b> <span>和外套同色系</span></div></li>
+        </ul>
+        <div class="tip">这套最舒服也最容易穿成睡衣出门，唯一的界限是鞋要正经、颜色要干净。</div>
+        <div class="total">全套约 ¥1130–2350</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="look" id="y6">
+    <img class="kits" src="assets/img/young6.jpg" alt="休闲西装单品平铺">
+    <div class="look-grid">
+      <img class="model" src="assets/img/model_y6.jpg" alt="休闲西装上身效果">
+      <div class="look-body">
+        <div class="look-head">
+          <div>
+            <span class="num">LOOK 06</span>
+            <h2>西装外套降龄穿</h2>
+            <p class="tagline">同一件西装，配卫衣和球鞋就不成熟了</p>
+          </div>
+          <button class="fav" data-id="y6">♡</button>
+        </div>
+        <span class="scene">适合：面试 · 正式场合 · 想收拾一下</span>
+        <ul class="items">
+          <li><span class="dot"></span><div><b>深灰无结构西装外套</b> <span>没垫肩没收腰，软塌肩</span></div></li>
+          <li><span class="dot"></span><div><b>浅灰圆领卫衣</b> <span>替掉衬衫，降龄核心操作</span></div></li>
+          <li><span class="dot"></span><div><b>白圆领 T</b> <span>下摆露出一点</span></div></li>
+          <li><span class="dot"></span><div><b>黑阔度直筒裤</b> <span>垂坠感好，盖到鞋面</span></div></li>
+          <li><span class="dot"></span><div><b>白色皮面球鞋</b> <span>极简款，别选厚重老爹鞋</span></div></li>
+          <li class="hat"><span class="dot"></span><div><b>黑棒球帽</b> <span>正式感和随意感的平衡</span></div></li>
+        </ul>
+        <div class="tip">这件西装能一直用到毕业以后。23 岁穿它不显老的关键只有一条——里面永远别配衬衫和皮鞋。</div>
+        <div class="total">全套约 ¥1330–2950</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="look" id="y7">
+    <img class="kits" src="assets/img/young7.jpg" alt="三层下摆叠穿单品平铺">
+    <div class="look-grid">
+      <img class="model" src="assets/img/model_y7.jpg" alt="三层下摆叠穿上身效果">
+      <div class="look-body">
+        <div class="look-head">
+          <div>
+            <span class="num">LOOK 07</span>
+            <h2>三层下摆</h2>
+            <p class="tagline">叠穿最能出效果的一招：长度差</p>
+          </div>
+          <button class="fav" data-id="y7">♡</button>
+        </div>
+        <span class="scene">适合：想穿得有层次 · 出片 <span class="badge-new">叠穿强化</span></span>
+        <ul class="items">
+          <li><span class="dot"></span><div><b>炭灰短款宽身夹克</b> <span>boxy 版型，比合身稍宽</span></div></li>
+          <li><span class="dot"></span><div><b>花灰拉链连帽卫衣</b> <span>拉链比圆领更好控制层次</span></div></li>
+          <li><span class="dot"></span><div><b>加长白 T</b> <span>比卫衣再长 6–8cm，整套成败在这一件</span></div></li>
+          <li><span class="dot"></span><div><b>黑宽松直筒工装裤</b> <span>裤型宽松才压得住上半身的层</span></div></li>
+          <li><span class="dot"></span><div><b>灰白复古跑鞋</b></div></li>
+          <li class="hat"><span class="dot"></span><div><b>黑棒球帽</b> <span>上半身已经很满，帽子要简洁</span></div></li>
+        </ul>
+        <div class="tip">从上到下依次：夹克最短、卫衣中长、T 恤最长。下摆露出两条边，身体就被分成三段，视觉上更修长。<b>买 T 恤时专门挑长一点的</b>，普通长度做不出这个效果。</div>
+        <div class="total">全套约 ¥1430–2900</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="look" id="y8">
+    <img class="kits" src="assets/img/young8.jpg" alt="衬衫中间层叠穿单品平铺">
+    <div class="look-grid">
+      <img class="model" src="assets/img/model_y8.jpg" alt="衬衫中间层叠穿上身效果">
+      <div class="look-body">
+        <div class="look-head">
+          <div>
+            <span class="num">LOOK 08</span>
+            <h2>衬衫当夹层</h2>
+            <p class="tagline">领口三层，最有欧美杂志感的叠穿</p>
+          </div>
+          <button class="fav" data-id="y8">♡</button>
+        </div>
+        <span class="scene">适合：约会 · 出街 · 想显得会穿 <span class="badge-new">叠穿强化</span></span>
+        <ul class="items">
+          <li><span class="dot"></span><div><b>黑色短款宽身夹克</b> <span>不是正装，要有街头感</span></div></li>
+          <li><span class="dot"></span><div><b>灰白细条纹衬衫</b> <span>当外套穿，全程敞开不扣</span></div></li>
+          <li><span class="dot"></span><div><b>白圆领 T</b> <span>最内层，领口要干净</span></div></li>
+          <li><span class="dot"></span><div><b>黑宽松直筒牛仔</b> <span>和 look 01、03 可共用</span></div></li>
+          <li><span class="dot"></span><div><b>白低帮德训鞋</b> <span>薄底，比厚底鞋更配这套</span></div></li>
+          <li class="hat"><span class="dot"></span><div><b>黑棒球帽</b> <span>压住条纹的"乖"感</span></div></li>
+        </ul>
+        <div class="tip">衬衫在这里不是衬衫，是<b>一件薄外套</b>，永远敞开。敞开之后正面形成两条竖线，比扣上更有纵向感。条纹要比纯色更好用——纯色容易看着像打底衫。</div>
+        <div class="total">全套约 ¥1380–2800</div>
+      </div>
+    </div>
+  </div>
+
+  <section class="info">
+    <h3>八套怎么选</h3>
+    <div class="tbl-wrap">
+      <table>
+        <tr><th>套</th><th>关键词</th><th>帽子</th><th>预算</th></tr>
+        <tr><td>01 教练夹克</td><td>日常 · 万能</td><td>黑棒球帽</td><td>1300+</td></tr>
+        <tr><td>02 抓绒马甲</td><td>山系 · 保暖</td><td>灰短毛线帽</td><td>1230+</td></tr>
+        <tr><td>03 牛仔叠牛仔</td><td>复古 · 有型</td><td>深灰棒球帽</td><td>1150+</td></tr>
+        <tr><td>04 山系冲锋衣</td><td>耐造 · 防风</td><td>黑短毛线帽</td><td>1430+</td></tr>
+        <tr><td>05 运动外套</td><td>舒服 · 通勤</td><td>花灰棒球帽</td><td>1130+</td></tr>
+        <tr><td>06 休闲西装</td><td>正式场合</td><td>黑棒球帽</td><td>1330+</td></tr>
+        <tr><td>07 三层下摆</td><td>层次 · 出片</td><td>黑棒球帽</td><td>1430+</td></tr>
+        <tr><td>08 衬衫夹层</td><td>杂志感 · 潮流</td><td>黑棒球帽</td><td>1380+</td></tr>
+      </table>
+    </div>
+  </section>
+
+  <section class="info">
+    <h3>尺码对照 · 176cm / 65kg</h3>
+    <div class="tbl-wrap">
+      <table>
+        <tr><th>项目</th><th>数值</th></tr>
+        <tr><td>上衣</td><td>日系 M / 欧美 S–M</td></tr>
+        <tr><td>成衣胸围</td><td>96–100cm</td></tr>
+        <tr><td>肩宽</td><td>43–44cm（落肩款可放宽到 46）</td></tr>
+        <tr><td>裤腰</td><td>76–78cm（29–30 码）</td></tr>
+        <tr><td>裤长</td><td>102–104cm（想堆脚面选 106）</td></tr>
+        <tr><td>夹克衣长</td><td>62–68cm（到胯骨，别过臀）</td></tr>
+        <tr><td>叠穿加长 T</td><td>衣长 72–76cm，比卫衣长 6–8cm</td></tr>
+        <tr><td>头围</td><td>57–58cm</td></tr>
+      </table>
+    </div>
+  </section>
+
+  <footer>
+    平铺图为单品示意，人物图为按 176cm / 65kg 体型生成的穿搭参考，两者都不是实际商品照片。价格区间供预算参考。点过的 ♡ 会自动保存。
+  </footer>
+
+</div>
+
+<script>
+  var favs = {};
+  try { favs = JSON.parse(localStorage.getItem('looks8v2') || '{}'); } catch(e) { favs = {}; }
+
+  function paint(b) {
+    b.classList.toggle('on', !!favs[b.dataset.id]);
+    b.textContent = favs[b.dataset.id] ? '♥' : '♡';
+  }
+
+  document.querySelectorAll('.fav').forEach(function(b) {
+    paint(b);
+    b.addEventListener('click', function() {
+      favs[b.dataset.id] = !favs[b.dataset.id];
+      try { localStorage.setItem('looks8v2', JSON.stringify(favs)); } catch(e) {}
+      paint(b);
+    });
+  });
+</script>
+<a class="site-back" href="./" aria-label="返回作品集">← 作品集</a>
+<style>
+.site-back{position:fixed;left:16px;bottom:16px;z-index:99;display:inline-flex;align-items:center;
+gap:6px;padding:9px 15px;border-radius:100px;background:rgba(26,26,26,.86);color:#fff;
+font:500 13px/1 -apple-system,BlinkMacSystemFont,"PingFang SC","Microsoft YaHei",sans-serif;
+text-decoration:none;box-shadow:0 4px 16px rgba(0,0,0,.18);backdrop-filter:blur(8px);
+transition:transform .15s,background .15s}
+.site-back:hover{background:#1A1A1A;transform:translateY(-1px)}
+</style>
+</body>
+</html>
